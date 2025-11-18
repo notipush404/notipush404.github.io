@@ -1,0 +1,36 @@
+@view-transition {
+ navigation: auto;
+}
+
+#headline {
+ view-transition-name: encabezado;
+}
+
+main {
+ view-transition-name: contenido;
+}
+
+::view-transition-group(encabezado) {
+ animation-duration: var(--md-sys-motion-duration-1000);
+}
+
+::view-transition-group(contenido) {
+ animation-duration: var(--md-sys-motion-duration-1000);
+}
+
+html::view-transition-old(encabezado) {
+ animation-name: salePorLaIzquierda;
+}
+
+html::view-transition-new(encabezado) {
+ animation-name: entraPorLaDerecha;
+}
+
+html::view-transition-old(contenido) {
+ animation-name: salePorLaIzquierda;
+}
+
+html::view-transition-new(contenido) {
+ animation-duration: var(--md-sys-motion-duration-700);
+ animation-name: entraPorLaDerecha;
+}

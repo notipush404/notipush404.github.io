@@ -1,0 +1,17 @@
+
+@view-transition {
+ navigation: auto;
+}
+
+::view-transition-group(root) {
+ animation-duration: var(--md-sys-motion-duration-700);
+}
+
+html::view-transition-old(root) {
+ animation-name: desvanece;
+}
+
+html::view-transition-new(root) {
+ animation-delay: var(--md-sys-motion-duration-700);
+ animation-name: aparece;
+}

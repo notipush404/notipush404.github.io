@@ -1,0 +1,153 @@
+/* Selecciona el tema claro para Material Design 3. Puedes elegir
+ * light.css, light-mc.css o light-hc.css */
+@import url(light.css) screen and (prefers-color-scheme: light);
+/* Selecciona el tema oscuro para Material Design 3. Puedes elegir
+ * dark.css, dark-mc.css o dark-hc.css */
+@import url(dark.css) screen and (prefers-color-scheme: dark);
+/* Definiciones para Material Design 3  */
+@import url(../material-tokens/css/baseline.css);
+/* Fonts utilizados */
+@import url(../lib/css/roboto.css);
+@import url(../lib/css/material-symbols-outlined.css);
+/* CSS de elementos utilizados */
+@import url(../lib/css/md-ripple.css);
+@import url(../lib/css/md-top-app-bar.css);
+@import url(../lib/css/md-menu.css);
+@import url(../lib/css/md-standard-icon-button.css);
+@import url(../lib/css/md-fab-primary.css);
+@import url(../lib/css/md-filled-button.css);
+@import url(../lib/css/md-filled-text-field.css);
+@import url(../lib/css/md-outline-button.css);
+@import url(../lib/css/md-switch.css);
+@import url(../lib/css/md-slider-field.css);
+@import url(../lib/css/md-segmented-button.css);
+@import url(../lib/css/md-list.css);
+@import url(../lib/css/md-cards.css);
+@import url(../lib/css/md-tab.css);
+@import url(../lib/css/md-navigation-bar.css);
+
+html {
+ /* Indica los temas del sistema operativo que son soportados. */
+ color-scheme: light dark;
+ --tabWidth: 3.75rem;
+ --anchoNav: 22.5rem;
+}
+
+main {
+ max-width: 600px;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+/* Quita un borde rojo que coloca Firefox. */
+:-moz-ui-invalid {
+ box-shadow: none;
+}
+
+body {
+ margin: 0;
+ font-family: var(--md-sys-typescale-body-large-font);
+ font-weight: var(--md-sys-typescale-body-large-weight);
+ font-size: var(--md-sys-typescale-body-large-size);
+ font-style: var(--md-sys-typescale-body-large-font-style);
+ letter-spacing: var(--md-sys-typescale-body-large-tracking);
+ line-height: var(--md-sys-typescale-body-large-line-height);
+ text-transform: var(--md-sys-typescale-body-large-text-transform);
+ text-decoration: var(--md-sys-typescale-body-large-text-decoration);
+ color: var(--md-sys-color-on-background);
+ background-color: var(--md-sys-color-background);
+ /* Las siguientes líneas Evita los cambios de apariencia al cargar estilos y
+ + custom elements, que son conocidos como Flash Of Unstyled Content (fouc). */
+ opacity: 0;
+ animation-name: fouc;
+ animation-fill-mode: forwards;
+ animation-duration: 1.5s;
+}
+
+@keyframes fouc {
+ to {
+  opacity: 1;
+ }
+}
+
+html {
+ --Font: -apple-system, BlinkMacSystemFont, roboto, sans-serif;
+ --colIntIos: white;
+ --colIntIosOnBk: #2acc2a;
+ --colIntIosOnBkFc: #1bbb1b;
+ --colIntIosOffBk: #dbdbdb;
+ --colIntIosOffBkFc: #BDBDBD;
+ /* Plain typeface */
+ --md-ref-typeface-plain: var(--Font);
+ /* Brand typeface */
+ --md-ref-typeface-brand: var(--Font);
+ --md-sys-typescale-label-large-weight-prominent:
+  var(--md-ref-typeface-weight-bold);
+ --md-box_shadow_level4:
+  0 var(--md-sys-elevation-level4) var(--md-sys-elevation-level4) var(--md-sys-color-shadow);
+ --md-box_shadow_level3:
+  0 var(--md-sys-elevation-level3) var(--md-sys-elevation-level3) var(--md-sys-color-shadow);
+ --md-box_shadow_level2:
+  0 var(--md-sys-elevation-level2) var(--md-sys-elevation-level2) var(--md-sys-color-shadow);
+ --md-box_shadow_level1:
+  0 var(--md-sys-elevation-level1) var(--md-sys-elevation-level1) var(--md-sys-color-shadow);
+ --md-box_shadow_level0: none;
+ --iconSize: 1.5rem;
+ --avatarSize: 2.5rem;
+ --imageSize: 3.5rem;
+ --videoWidth: 7.125rem;
+ --videoHeight: 4rem;
+ --scroll-headline-duracion: 2s;
+ --md-sys-state-focus-indicator-outer-offset: 0.125rem;
+ --md-sys-state-focus-indicator-thickness: 0.1875rem;
+ /* Pressed state layer opacity */
+ --state-pressed-transparency-percentage: 84%;
+ /* Focus state layer opacity */
+ --state-focus-transparency-percentage: 88%;
+ /* Hover state layer opacity */
+ --state-hover-transparency-percentage: 92%;
+}
+
+p {
+ margin: 1rem;
+}
+
+a {
+ color: var(--md-sys-color-on-background);
+}
+
+@media (prefers-color-scheme: light) {
+ html {
+  --md-riple-color: #00000020;
+ }
+}
+
+@media (prefers-color-scheme: dark) {
+ html {
+  --md-riple-color: #ffffff40;
+ }
+}
+
+@keyframes salePorLaIzquierda {
+ to {
+  translate: -100vw 0;
+ }
+}
+
+@keyframes entraPorLaDerecha {
+ from {
+  translate: 100vw 0;
+ }
+}
+
+@keyframes aparece {
+ from {
+  opacity: 0;
+ }
+}
+
+@keyframes desvanece {
+ to {
+  opacity: 0;
+ }
+}
