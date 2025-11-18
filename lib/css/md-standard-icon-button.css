@@ -1,0 +1,97 @@
+.md-standard-icon-button {
+ position: relative;
+ display: inline-block;
+ border: none;
+ padding: 0.25rem;
+ background-color: transparent;
+ text-decoration: none;
+ border-radius: 50%;
+ overflow: hidden;
+}
+
+.md-standard-icon-button[hidden] {
+ display: none;
+}
+
+/* state layer */
+.md-standard-icon-button::after {
+ content: "";
+ position: absolute;
+ top: 0.25rem;
+ right: 0.25rem;
+ left: 0.25rem;
+ bottom: 0.25rem;
+ border-radius: 50%;
+}
+
+.md-standard-icon-button span {
+ position: relative;
+ padding: 0.5rem;
+ color: var(--md-sys-color-on-surface-variant);
+ font-size: 1.5rem;
+ width: 1.5rem;
+ height: 1.5rem;
+}
+
+.md-standard-icon-button.avatar span {
+ padding: 0.3125rem;
+ font-size: 1.875rem;
+ width: 1.875rem;
+ height: 1.875rem;
+}
+
+.md-standard-icon-button:hover::after {
+ background-color: var(--md-sys-color-on-surface-variant);
+ opacity: var(--md-sys-state-hover-state-layer-opacity);
+}
+
+.md-standard-icon-button:hover span {
+ color: var(--md-sys-color-on-surface-variant);
+}
+
+.md-standard-icon-button:focus {
+ outline: none;
+}
+
+.md-standard-icon-button:focus::after {
+ background-color: var(--md-sys-color-on-surface-variant);
+ opacity: var(--md-sys-state-focus-state-layer-opacity);
+}
+
+.md-standard-icon-button:focus span {
+ color: var(--md-sys-color-on-surface-variant);
+}
+
+.md-standard-icon-button:active {
+ background-position: center;
+ background-image:
+  radial-gradient(circle, var(--md-riple-color) 1%, transparent 1%);
+ background-size: 100%;
+ animation-name: md-ripple;
+ animation-duration: var(--md-sys-motion-duration-500);
+}
+
+.md-standard-icon-button:active::after {
+ background-color: var(--md-sys-color-on-surface-variant);
+ opacity: var(--md-sys-state-pressed-state-layer-opacity);
+}
+
+.md-standard-icon-button:active span {
+ -color: var(--md-sys-color-on-surface-variant);
+}
+
+.md-standard-icon-button:disabled::after {
+ background-color: transparent !important;
+ opacity: 1;
+}
+
+.md-standard-icon-button:disabled span {
+ color: var(--md-sys-color-on-surface) !important;
+ opacity: 0.38;
+}
+
+.md-standard-icon-button:disabled:active {
+ background-image: none;
+ animation-name: none;
+ animation-duration: unset;
+}

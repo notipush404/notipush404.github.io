@@ -1,0 +1,162 @@
+.md-menu {
+ display: none;
+ z-index: 2;
+ box-sizing: border-box;
+ cursor: default;
+ padding: 0.25rem 0;
+ border-radius:
+  var(--md-sys-shape-corner-extra-small-default-size);
+ background-color: var(--md-sys-color-surface-container-low);
+ box-shadow: var(--md-box_shadow_level2);
+ transform: translateY(-50%) scaleY(0);
+ transition-timing-function:
+  cubic-bezier(var(--md-sys-motion-easing-standard-x0),
+   var(--md-sys-motion-easing-standard-y0),
+   var(--md-sys-motion-easing-standard-x1),
+   var(--md-sys-motion-easing-standard-y1));
+ transition-property: display, transform;
+ transition-behavior: allow-discrete;
+ transition-duration: var(--md-sys-motion-duration-500);
+}
+
+.md-menu.open {
+ display: block;
+ transform: translateY(0) scaleY(1);
+}
+
+@starting-style {
+ .md-menu.open {
+  display: block;
+  transform: translateY(-50%) scaleY(0);
+ }
+}
+
+/* container */
+.md-menu>*::after {
+ content: "";
+ position: absolute;
+ z-index: -2;
+ top: 0;
+ right: 0;
+ left: 0;
+ bottom: 0;
+}
+
+/* container */
+.md-menu>.selected::after {
+ background-color: var(--md-sys-color-secondary-container);
+}
+
+/* label, shape */
+.md-menu>* {
+ position: relative;
+ display: block;
+ box-sizing: border-box;
+ height: 3rem;
+ line-height: 3rem;
+ padding: 0 0.75rem;
+ color: var(--md-sys-color-on-surface);
+ font-family: var(--md-sys-typescale-label-large-font);
+ font-weight: var(--md-sys-typescale-label-large-weight);
+ font-size: var(--md-sys-typescale-label-large-size);
+ font-style: var(--md-sys-typescale-label-large-font-style);
+ letter-spacing: var(--md-sys-typescale-label-large-tracking);
+ text-transform: var(--md-sys-typescale-label-large-text-transform);
+ text-decoration: var(--md-sys-typescale-label-large-text-decoration);
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ overflow: hidden;
+}
+
+/* label, shape */
+.md-menu>.selected {
+ color: var(--md-sys-color-on-secondary-container);
+}
+
+/* state layer */
+.md-menu>*::before {
+ content: "";
+ position: absolute;
+ z-index: -1;
+ top: 0;
+ right: 0;
+ left: 0;
+ bottom: 0;
+}
+
+/* icon */
+.md-menu>* span {
+ position: relative;
+ margin-right: 0.75rem;
+ vertical-align: middle;
+ color: var(--md-sys-color-on-surface-variant);
+ font-size: 1.5rem;
+ width: 1.5rem;
+ height: 1.5rem;
+}
+
+/* icon */
+.md-menu>.selected span {
+ color: var(--md-sys-color-on-secondary-container);
+}
+
+/* state layer */
+.md-menu>:hover::before {
+ background-color: var(--md-sys-color-on-surface);
+ opacity: var(--md-sys-state-hover-state-layer-opacity);
+}
+
+/* label, shape */
+.md-menu>:hover {
+ color: var(--md-sys-color-on-surface);
+}
+
+/* icon */
+.md-menu>:hover span {
+ color: var(--md-sys-color-on-surface-variant);
+}
+
+/* state layer */
+.md-menu>:focus::before {
+ background-color: var(--md-sys-color-on-surface);
+ opacity: var(--md-sys-state-focus-state-layer-opacity);
+}
+
+/* label, shape */
+.md-menu>:focus {
+ color: var(--md-sys-color-on-surface);
+ outline: none;
+}
+
+/* icon */
+.md-menu>:focus span {
+ color: var(--md-sys-color-on-surface-variant);
+}
+
+/* label, shape */
+.md-menu>:active {
+ background-position: center;
+ background-image:
+  radial-gradient(circle, var(--md-riple-color) 1%, transparent 1%);
+ background-size: 100%;
+ animation-name: md-ripple;
+ animation-duration: var(--md-sys-motion-duration-500);
+ color: var(--md-sys-color-on-surface);
+}
+
+/* state layer */
+.md-menu>:active::before {
+ background-color: var(--md-sys-color-on-surface);
+ opacity: var(--md-sys-state-pressed-state-layer-opacity);
+}
+
+
+/* icon */
+.md-menu>:active span {
+ color: var(--md-sys-color-on-surface-variant);
+}
+
+.md-menu input[type="radio"] {
+ appearance: none;
+ transform: scaleX(0);
+}

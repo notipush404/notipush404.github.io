@@ -1,0 +1,37 @@
+.md-headline {
+ box-sizing: border-box;
+ margin: 0;
+ color: var(--md-sys-color-on-surface);
+ background-color: var(--md-sys-color-surface);
+ transition-property: color;
+ transition-duration: var(--md-sys-motion-duration-1000);  
+ transition-timing-function: ease-in;
+}
+
+.md-headline.scroll-adicional {
+ color: var(--md-sys-color-surface-container-low);
+ background-color: var(--md-sys-color-surface-container-low);
+}
+
+.md-headline.scroll {
+ color: var(--md-sys-color-surface);
+}
+
+.md-headline.headline-small {
+ padding: 0 1rem 1.5rem 1rem;
+}
+
+.md-headline.headline-medium {
+ padding: 0 1rem 1.75rem 1rem;
+}
+
+md-top-app-bar[headline] h1 {
+ opacity: 0;
+ transition-property: opacity;
+ transition-duration: var(--md-sys-motion-duration-1000);  
+}
+
+md-top-app-bar[headline].scroll h1 {
+ opacity: 1;
+ transition-timing-function: ease-in;
+}

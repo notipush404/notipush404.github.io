@@ -1,0 +1,135 @@
+.md-cards {
+ margin: 0.5rem;
+ gap: 0.5rem;
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+}
+
+/* container */
+.md-cards>*::before {
+ content: "";
+ position: absolute;
+ z-index: -2;
+ top: 0;
+ right: 0;
+ left: 0;
+ bottom: 0;
+ background-color: var(--md-sys-color-surface-variant);
+}
+
+/* state layer */
+.md-cards>*::after {
+ content: "";
+ position: absolute;
+ z-index: -1;
+ top: 0;
+ right: 0;
+ left: 0;
+ bottom: 0;
+ background-color: transparent;
+}
+
+.md-cards>* {
+ position: relative;
+ display: block;
+ text-decoration: none;
+ color: var(--md-sys-color-on-surface-variant);
+ border-radius: 0.75rem;
+ overflow: hidden;
+ box-shadow: var(--md-box_shadow_level0);
+}
+
+/* state layer */
+.md-cards>:hover::after {
+ background-color: var(--md-sys-color-on-surface-variant);
+ opacity: var(--md-sys-state-hover-state-layer-opacity);
+}
+
+.md-cards>a:hover {
+ box-shadow: var(--md-box_shadow_level1);
+}
+
+/* state layer */
+.md-cards>:focus::after {
+ background-color: var(--md-sys-color-on-surface-variant);
+ opacity: var(--md-sys-state-focus-state-layer-opacity);
+}
+
+.md-cards>a:focus {
+ outline: none;
+}
+
+/* state layer */
+.md-cards>:active::after {
+ background-color: var(--md-sys-color-on-surface-variant);
+ opacity: var(--md-sys-state-pressed-state-layer-opacity);
+}
+
+.md-cards a:active {
+ background-position: center;
+ background-image:
+  radial-gradient(circle, var(--md-riple-color) 1%, transparent 1%);
+ background-size: 100%;
+ animation-name: md-ripple;
+ animation-duration: var(--md-sys-motion-duration-500);
+ box-shadow: var(--md-box_shadow_level0) !important;
+}
+
+.md-cards>*>* {
+ display: block;
+}
+
+.md-cards figure {
+ border-radius: 0.75rem;
+ padding: 0;
+ margin: 0;
+ width: 100%;
+}
+
+.md-cards figure * {
+ border-radius: 0.75rem;
+ width: 100%;
+}
+
+.md-cards .headline {
+ margin: 1rem;
+ font-family: var(--md-sys-typescale-headline-small-font);
+ font-weight: var(--md-sys-typescale-headline-small-weight);
+ font-size: var(--md-sys-typescale-headline-small-size);
+ font-style: var(--md-sys-typescale-headline-small-font-style);
+ letter-spacing: var(--md-sys-typescale-headline-small-tracking);
+ line-height: var(--md-sys-typescale-headline-small-line-height);
+ text-transform: var(--md-sys-typescale-headline-small-text-transform);
+ text-decoration: var(--md-sys-typescale-headline-small-text-decoration);
+}
+
+.md-cards a .headline {
+ text-decoration: underline;
+}
+
+.md-cards .supporting {
+ margin: 1rem;
+ font-family: var(--md-sys-typescale-body-large-font);
+ font-weight: var(--md-sys-typescale-body-large-weight);
+ font-size: var(--md-sys-typescale-body-large-size);
+ font-style: var(--md-sys-typescale-body-large-font-style);
+ letter-spacing: var(--md-sys-typescale-body-large-tracking);
+ line-height: var(--md-sys-typescale-body-large-line-height);
+ text-transform: var(--md-sys-typescale-body-large-text-transform);
+ text-decoration: var(--md-sys-typescale-body-large-text-decoration);
+}
+
+.md-cards figure video, .md-cards figure canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+}
+    
+.md-cards .card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    text-decoration: none;    
+}

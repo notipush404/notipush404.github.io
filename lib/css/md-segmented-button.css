@@ -1,0 +1,149 @@
+.md-segmented-button {
+ display: flex;
+ align-items: stretch;
+ box-sizing: border-box;
+ border: 0.0625rem solid var(--md-sys-color-outline);
+ height: 2.5rem;
+ border-radius: 1.25rem;
+ overflow: hidden;
+}
+
+.md-segmented-button[hidden] {
+ display: none;
+}
+
+.md-segmented-button input {
+ -webkit-appearance: none;
+ appearance: none;
+ flex: 0 1 0.0625rem;
+ width: 0.0625rem;
+ height: 2.375rem;
+ margin: 0;
+ padding: 0;
+ background-color: var(--md-sys-color-outline);
+}
+
+.md-segmented-button input:first-of-type {
+ transform: scaleX(0);
+}
+
+.md-segmented-button input:focus {
+ outline: none;
+}
+
+.md-segmented-button :checked+label {
+ color: var(--md-sys-color-on-secondary-container);
+}
+
+.md-segmented-button label {
+ position: relative;
+ flex: 1 1 1.5rem;
+ display: block;
+ box-sizing: border-box;
+ height: 2.375rem;
+ line-height: 2.375rem;
+ text-align: center;
+ color: var(--md-sys-color-on-surface);
+ font-family: var(--md-sys-typescale-label-large-font);
+ font-weight: var(--md-sys-typescale-label-large-weight);
+ font-size: var(--md-sys-typescale-label-large-size);
+ font-style: var(--md-sys-typescale-label-large-font-style);
+ letter-spacing: var(--md-sys-typescale-label-large-tracking);
+ text-transform: var(--md-sys-typescale-label-large-text-transform);
+ text-decoration: var(--md-sys-typescale-label-large-text-decoration);
+ padding: 0 0.75rem;
+ overflow: hidden;
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ overflow: hidden;
+}
+
+.md-segmented-button label::before {
+ /* container */
+ content: "";
+ position: absolute;
+ z-index: -2;
+ top: 0;
+ right: 0;
+ left: 0;
+ bottom: 0;
+}
+
+.md-segmented-button label::after {
+ /* state layer */
+ content: "";
+ position: absolute;
+ z-index: -1;
+ top: 0;
+ right: 0;
+ left: 0;
+ bottom: 0;
+ background-color: transparent;
+}
+
+.md-segmented-button :checked+label::before {
+ /* container */
+ background-color: var(--md-sys-color-secondary-container);
+}
+
+.md-segmented-button label span {
+ vertical-align: middle;
+ color: var(--md-sys-color-on-surface);
+ font-size: 1.125rem;
+ width: 1.125rem;
+ height: 1.125rem;
+ margin-right: 0.5rem;
+}
+
+
+.md-segmented-button label span:first-child {
+ display: none;
+}
+
+.md-segmented-button :checked+label span:first-child {
+ display: inline-block;
+ color: var(--md-sys-color-on-secondary-container);
+}
+
+/* state layer */
+.md-segmented-button label:hover::after {
+ background-color: var(--md-sys-color-on-surface);
+ opacity: var(--md-sys-state-hover-state-layer-opacity);
+}
+
+/* state layer */
+.md-segmented-button :checked+label:hover::after {
+ background-color: var(--md-sys-color-on-secondary-container);
+}
+
+/* state layer */
+.md-segmented-button :focus+label::after {
+ background-color: var(--md-sys-color-on-surface);
+ opacity: var(--md-sys-state-focus-state-layer-opacity);
+}
+
+/* state layer */
+.md-segmented-button :focus:checked+label::after {
+ background-color: var(--md-sys-color-on-secondary-container);
+}
+
+.md-segmented-button label:active,
+.md-segmented-button :active+label {
+ background-position: center;
+ background-image:
+  radial-gradient(circle, var(--md-riple-color) 1%, transparent 1%);
+ background-size: 100%;
+ animation-name: md-ripple;
+ animation-duration: var(--md-sys-motion-duration-500);
+}
+
+/* state layer */
+.md-segmented-button :active+label::after {
+ background-color: var(--md-sys-color-on-surface);
+ opacity: var(--md-sys-state-pressed-state-layer-opacity);
+}
+
+/* state layer */
+.md-segmented-button :active:checked+label::after {
+ background-color: var(--md-sys-color-on-secondary-container);
+}

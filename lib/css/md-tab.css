@@ -1,0 +1,142 @@
+.md-tab {
+ display: flex;
+ background-color: transparent;
+ align-items: stretch;
+ flex-wrap: nowrap;
+ overflow-x: auto;
+ position: sticky;
+ z-index: 1;
+}
+
+.md-tab.fixed {
+ justify-content: center;
+}
+
+.md-tab.scrollable {
+ padding-left: 2rem;
+ gap: 1rem;
+}
+
+.md-tab.scroll {
+ background-color: var(--md-sys-color-surface-container-low);
+}
+
+.md-tab a {
+ position: relative;
+ display: flex;
+ flex-direction: column;
+ justify-content: start;
+ align-items: center;
+ color: var(--md-sys-color-on-surface-variant);
+ font-family: var(--md-sys-typescale-title-small-font);
+ font-weight: var(--md-sys-typescale-title-small-weight);
+ font-size: var(--md-sys-typescale-title-small-size);
+ font-style: var(--md-sys-typescale-title-small-font-style);
+ letter-spacing: var(--md-sys-typescale-title-small-tracking);
+ line-height: var(--md-sys-typescale-title-small-line-height);
+ text-transform: var(--md-sys-typescale-title-small-text-transform);
+ text-decoration: var(--md-sys-typescale-title-small-text-decoration);
+ text-align: center;
+ box-sizing: border-box;
+ border-bottom: 0.1875rem solid var(--md-sys-color-surface);
+}
+
+.md-tab.fixed a {
+ flex: 0 0 var(--tabWidth);
+}
+
+.md-tab.scrollable a {
+ flex: 0 0 auto;
+}
+
+.md-tab a.active {
+ border-bottom-color: var(--md-sys-color-primary);
+}
+
+/* state layer */
+.md-tab a::after {
+ content: "";
+ position: absolute;
+ z-index: -1;
+ top: 0;
+ right: 0;
+ left: 0;
+ bottom: 0;
+ background-color: transparent;
+}
+
+.md-tab span {
+ font-size: var(--iconSize);
+ height: var(--iconSize);
+ width: var(--iconSize);
+ color: var(--md-sys-color-on-surface-variant);
+}
+
+.md-tab .active span {
+ color: var(--md-sys-color-primary);
+}
+
+.md-tab a:hover {
+ color: var(--md-sys-color-on-surface);
+}
+
+/* state layer */
+.md-tab a:hover::after {
+ background-color: var(--md-sys-color-on-surface);
+ opacity: var(--md-sys-state-hover-state-layer-opacity);
+}
+
+.md-tab a.active:hover {
+ color: var(--md-sys-color-primary);
+}
+
+/* state layer */
+.md-tab a.active:hover::after {
+ background-color: var(--md-sys-color-primary);
+ opacity: var(--md-sys-state-hover-state-layer-opacity);
+}
+
+.md-tab a:hover span {
+ color: var(--md-sys-color-on-surface);
+}
+
+.md-tab a.active:hover span {
+ color: var(--md-sys-color-primary);
+}
+
+.md-tab a:focus {
+ outline: none;
+}
+
+/* state layer */
+.md-tab a:focus::after {
+ background-color: var(--md-sys-color-on-surface);
+ opacity: var(--md-sys-state-focus-state-layer-opacity);
+}
+
+/* state layer */
+.md-tab a.active:focus::after {
+ background-color: var(--md-sys-color-primary);
+ opacity: var(--md-sys-state-hover-state-layer-opacity);
+}
+
+.md-tab a:active {
+ background-position: center;
+ background-image:
+   radial-gradient(circle, var(--md-riple-color) 1%, transparent 1%);
+ background-size: 100%;
+ animation-name: md-ripple;
+ animation-duration: var(--md-sys-motion-duration-500);
+}
+
+/* state layer */
+.md-tab a:active::after {
+ background-color: var(--md-sys-color-on-surface);
+ opacity: var(--md-sys-state-pressed-state-layer-opacity);
+}
+
+/* state layer */
+.md-tab a.active:active::after {
+ background-color: var(--md-sys-color-primary);
+ opacity: var(--md-sys-state-pressed-state-layer-opacity);
+}

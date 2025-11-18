@@ -1,0 +1,110 @@
+/* container */
+.md-filled-button::before {
+ content: "";
+ position: absolute;
+ z-index: -2;
+ top: 0;
+ right: 0;
+ left: 0;
+ bottom: 0;
+ background-color: var(--md-sys-color-primary);
+}
+
+/* state layer */
+.md-filled-button::after {
+ content: "";
+ position: absolute;
+ z-index: -1;
+ top: 0;
+ right: 0;
+ left: 0;
+ bottom: 0;
+ background-color: transparent;
+}
+
+/* label, shape */
+.md-filled-button {
+ position: relative;
+ box-sizing: border-box;
+ border-radius: 1.25rem;
+ height: 2.5rem;
+ line-height: 2.5rem;
+ padding: 0 1.5rem;
+ border: none;
+ background-color: transparent;
+ box-shadow: var(--md-box_shadow_level0);
+ font-family: var(--md-sys-typescale-label-large-font);
+ font-weight: var(--md-sys-typescale-label-large-weight);
+ font-size: var(--md-sys-typescale-label-large-size);
+ font-style: var(--md-sys-typescale-label-large-font-style);
+ letter-spacing: var(--md-sys-typescale-label-large-tracking);
+ text-transform: var(--md-sys-typescale-label-large-text-transform);
+ text-decoration: var(--md-sys-typescale-label-large-text-decoration);
+ color: var(--md-sys-color-on-primary);
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ overflow: hidden;
+}
+
+/* label, shape */
+.md-filled-button:hover {
+ color: var(--md-sys-color-on-primary);
+ box-shadow: var(--md-box_shadow_level1);
+}
+
+/* state layer */
+.md-filled-button:hover::after {
+ background-color: var(--md-sys-color-on-primary);
+ opacity: var(--md-sys-state-hover-state-layer-opacity);
+}
+
+/* label, shape */
+.md-filled-button:focus {
+ outline: none;
+ color: var(--md-sys-color-on-primary);
+ box-shadow: var(--md-box_shadow_level0) !important;
+}
+
+/* state layer */
+.md-filled-button:focus::after {
+ background-color: var(--md-sys-color-on-primary);
+ opacity: var(--md-sys-state-focus-state-layer-opacity);
+}
+
+/* label, shape */
+.md-filled-button:active {
+ color: var(--md-sys-color-on-primary);
+ background-position: center;
+ background-image:
+  radial-gradient(circle, var(--md-sys-color-on-primary-container) 1%, transparent 1%);
+ background-size: 100%;
+ animation-name: md-ripple;
+ animation-duration: var(--md-sys-motion-duration-500);
+ box-shadow: var(--md-box_shadow_level0) !important;
+}
+
+/* state layer */
+.md-filled-button:active::after {
+ background-color: var(--md-sys-color-on-primary);
+ opacity: var(--md-sys-state-pressed-state-layer-opacity);
+}
+
+/* label, shape */
+.md-filled-button:disabled {
+ background-color: transparent !important;
+ color: var(--md-sys-color-on-surface) !important;
+ opacity: 0.38 !important;
+ box-shadow: var(--md-box_shadow_level0) !important;
+}
+
+/* container */
+.md-filled-button:disabled::before {
+ background-color: var(--md-sys-color-on-surface) !important;
+ opacity: 0.12 !important;
+}
+
+/* state layer */
+.md-filled-button:disabled::after {
+ background-color: transparent !important;
+ opacity: 1 !important;
+}

@@ -1,0 +1,77 @@
+Generar el listado de archivos del sw.js desde Visual Studio Code.
+1. Abrir una terminal desde el menú 
+    Terminal > New Terminal
+
+2. Desde la terminal introducir la orden:
+    Get-ChildItem -path . -Recurse | Select Directory,Name | Out-File archivos.txt
+
+3. Abrir el archivo generado, que se llama
+    archivos.txt
+   y sobre este, realizar los pasos que siguen:
+
+4. Quita del archivo archivos.txt:
+    * el encabezado,
+    * todas las carpetas,
+    * el archivo .vscode/settings.json,
+    * el archivo .htaccess,
+    * el archivo archivos.txt,
+    * este archivo (instruccionesListadoSw.txt),
+    * el archivo jsconfig.json,
+    * el archivo sw.js,
+    * el archivo de la base de datos, que termina en ".bd" y
+      está en la carpeta srv,
+    * todos los archivos de php y
+    * las líneas en blanco del final
+
+5. Cambia los \ por / desde Visual Studio Code con las siguientes
+   combinaciones de teclas:
+
+    Ctrl+H En el diálogo que aparece introduce lo siguiente:
+    Find:\
+    Replace:/
+
+    Clic en el icono Reemplaza todo o Replace All y luego teclea ESC
+ 
+6. Coloca las comillas y coma del final de cada línea desde Visual
+   Studio Code con las siguientes combinaciones de teclas:
+
+    Ctrl+H En el diálogo que aparece, selecciona el botón
+            ".*"
+           e introduce lo siguiente:
+    Find:\s*$
+    Replace:",
+
+    Clic en el icono Reemplaza todo o Replace All y luego teclea ESC
+
+7. Marca la carpeta inicial, presiona la combinación de teclas:
+
+    Shift+Ctrl+L
+
+    borra la selección, teclea " y luego ESC
+
+8. Cambia las secuencias de espacios por / con las siguientes
+   combinaciones de teclas:
+
+    Ctrl+H En el diálogo que aparece, selecciona el botón
+            ".*"
+           e introduce lo siguiente:
+    Find:\s+
+    Replace:/
+
+    Clic en el icono Reemplaza todo o Replace All y luego teclea ESC
+
+9. Cambia las "/ por " con las siguientes combinaciones de teclas:
+
+    Ctrl+H En el diálogo que aparece, quita la selección del botón
+            ".*"
+           e introduce lo siguiente:
+    Find:"/
+    Replace:"
+
+    Clic en el icono Reemplaza todo o Replace All y luego teclea ESC
+
+10. Copia el texto al archivo
+     sw.js
+    en el contenido del arreglo llamado ARCHIVOS, pero recuerda
+    mantener el último elemento, que dice:
+     "/"

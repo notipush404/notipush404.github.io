@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es" class="light dark">
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>Notificaciones Push - NotiPush404</title>
+
+  <!-- Resumen para los motores de búsqueda. -->
+  <meta name="description" content="Ejemplo de PWA con Material Design">
+
+  <script src="js/registraServiceWorker.js"></script>
+
+  <meta name="viewport" content="width=device-width">
+
+  <!-- Color de la barra de navegación de Chrome en dispositivos móviles. -->
+  <meta name="theme-color" content="#00a97f">
+
+  <!-- Ícono para la página web, que normalmente se pone en la raíz del sitio.
+  Puede ser diferente para cada página. -->
+  <link rel="icon" sizes="32x32" href="favicon.ico">
+
+  <!-- Configuración de la PWA para Chrome, Edge y Safari.
+  Debe ponerse en todas las páginas. -->
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Permite a los navegadores, que como Safari no soportan el estándar
+  completo de custom elementsm, lo cumplan totalmente. Debe ponerse en todas
+  las páginas. -->
+  <script src="ungap/custom-elements.js"></script>
+
+  <!-- Configuración de todas las páginas con JavaSript. -->
+  <script type="module" src="js/configura.js"></script>
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/transicion_pestanas.css">
+
+</head>
+
+<body onload="preparaVista()">
+
+  <md-top-app-bar class="center-aligned">
+
+    <h1>Notificaciones Push</h1>
+
+    <button is="md-menu-button" slot="navigation" style="visibility: hidden;"></button>
+
+  </md-top-app-bar>
+
+  <nav-tab-fixed id="tab"></nav-tab-fixed>
+
+  <main>
+    <form onsubmit="submitForm('srv/notifica.php', event)
+    .then(respuesta => {event.target.reset();})
+    .catch(muestraError)">
+      <p>
+        <label class="md-filled-text-field">
+          <input required placeholder="Mensaje*" name="mensaje">
+          <span>Mensaje</span>
+        </label>
+      </p>
+      <button class="md-filled-button" style="width: 100%;" id="btnNotifica" type="submit" hidden onclick="notificaDesdeElServidor()">
+        Notifica
+      </button>
+    </form>
+    <p style="display: flex; align-items: center;">
+    <button class="md-filled-button" id="btnSuscribe" type="button" hidden onclick="suscribe()">
+      Suscríbete
+    </button>
+
+
+    <button class="md-outline-button" id="btnCancela" type="button" hidden onclick="cancela()">
+      Cancela suscripción
+    </button>
+      <output style="margin-left: auto;" id="outEstado">
+        <progress max="100">Cargando&hellip;</progress>
+      </output>
+    </p>  
+    <p></p>
+    <fieldset>
+      <legend>Reporte de envío a endpoints</legend>
+
+      <dl id="reporte" style="word-break: break-all; overflow-wrap: break-word;"></dl>
+
+    </fieldset>
+  </main>
+
+
+  <!-- <nav-drw></nav-drw> -->
+  <script type="module">
+    import { muestraTextoDeAyuda } from "./lib/js/muestraTextoDeAyuda.js"
+    import { exportaAHtml } from "./lib/js/exportaAHtml.js"
+    import { muestraError } from "./lib/js/muestraError.js"
+    import { muestraObjeto } from "./lib/js/muestraObjeto.js"
+    import { submitForm } from "./lib/js/submitForm.js"
+    import { activaNotificacionesPush } from "./lib/js/activaNotificacionesPush.js"
+    import { getSuscripcionPush } from "./lib/js/getSuscripcionPush.js"
+    import { suscribeAPush } from "./lib/js/suscribeAPush.js"
+    import { cancelaSuscripcionPush } from "./lib/js/cancelaSuscripcionPush.js"
+    import { consumeJson } from "./lib/js/consumeJson.js"
+    import { enviaJson } from "./lib/js/enviaJson.js"
+    import { urlBase64ToUint8Array } from "./lib/js/urlBase64ToUint8Array.js"
+    import { calculaDtoParaSuscripcion } from "./lib/js/calculaDtoParaSuscripcion.js"
+    import { htmlentities } from "./lib/js/htmlentities.js"
+
+    const applicationServerKey = urlBase64ToUint8Array(
+      "BPga5NoFvuA-LGSfoDagl1G1aDcCJkfc4oTlzlrdW_wjdIu87lhANQ4IxJ5Vmg1jsdznnYZ2CEZ_VhYZpkIogAg")
+    /** @enum {string} */
+    const Estado = {
+      CALCULANDO: "Calculando…",
+      SUSCRITO: "Suscrito",
+      DESUSCRITO: "Sin suscripción",
+      INCOMPATIBLE: "Incompatible"
+    }
+
+    async function preparaVista() {
+      try {
+        await activaNotificacionesPush("sw.js")
+        const suscripcion = await getSuscripcionPush()
+        if (suscripcion === null) {
+          muestraEstado(Estado.DESUSCRITO)
+        } else {
+          // Modifica la suscripción en el servidor,
+          const dto = calculaDtoParaSuscripcion(suscripcion)
+          await enviaJson("srv/suscripcion-modifica.php", dto)
+          muestraEstado(Estado.SUSCRITO)
+        }
+      } catch (error) {
+        muestraEstado(Estado.INCOMPATIBLE)
+        muestraError(error)
+      }
+    }
+    exportaAHtml(preparaVista)
+
+    async function notificaDesdeElServidor() {
+      try {
+        reporte.innerHTML =
+     /* html */ `<progress max="100">Cargando&hellip;</progress>`
+        const render = await consumeJson("srv/notifica.php")
+        await muestraObjeto(document, render.body)
+      } catch (error) {
+        muestraError(error)
+      }
+    }
+    exportaAHtml(notificaDesdeElServidor)
+
+    async function suscribe() {
+      try {
+        muestraEstado(Estado.CALCULANDO)
+        const suscripcion = await suscribeAPush(applicationServerKey)
+        // Agrega la suscripción al servidor,
+        const dto = calculaDtoParaSuscripcion(suscripcion)
+        await enviaJson("srv/suscripcion-modifica.php", dto)
+        muestraEstado(Estado.SUSCRITO)
+      } catch (error) {
+        muestraError(error)
+      }
+    }
+    exportaAHtml(suscribe)
+
+    async function cancela() {
+      try {
+        muestraEstado(Estado.CALCULANDO)
+        const suscripcion = await cancelaSuscripcionPush()
+        if (suscripcion !== null) {
+          // Elimina la suscripción en el servidor,
+          const dto = calculaDtoParaSuscripcion(suscripcion)
+          await enviaJson("srv/suscripcion-elimina.php", dto)
+          muestraEstado(Estado.DESUSCRITO)
+        }
+      } catch (error) {
+        muestraError(error)
+      }
+    }
+    exportaAHtml(cancela)
+
+    /** @param {Estado} estado */
+    function muestraEstado(estado) {
+      outEstado.value = estado
+      if (estado === Estado.INCOMPATIBLE || estado === Estado.CALCULANDO) {
+        btnSuscribe.hidden = true
+        btnCancela.hidden = true
+        btnNotifica.hidden = true
+      } else if (estado === Estado.SUSCRITO) {
+        btnSuscribe.hidden = true
+        btnCancela.hidden = false
+        btnNotifica.hidden = false
+      } else if (estado === Estado.DESUSCRITO) {
+        btnSuscribe.hidden = false
+        btnCancela.hidden = true
+        btnNotifica.hidden = true
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>

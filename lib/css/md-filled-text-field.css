@@ -1,0 +1,194 @@
+.md-filled-text-field {
+ position: relative;
+ overflow: hidden;
+ display: flex;
+ flex-direction: column;
+ align-items: stretch;
+ padding-top: calc(0.5rem + var(--md-sys-typescale-body-small-line-height));
+ border-top-left-radius: var(--md-sys-shape-corner-extra-small-top-top-left);
+ border-top-right-radius: var(--md-sys-shape-corner-extra-small-top-top-right);
+ overflow: hidden;
+}
+
+/* container */
+.md-filled-text-field::before {
+ content: "";
+ position: absolute;
+ z-index: -2;
+ top: 0;
+ right: 0;
+ left: 0;
+ bottom: 0;
+ background-color: var(--md-sys-color-surface-container-highest);
+}
+
+/* state layer */
+.md-filled-text-field::after {
+ content: "";
+ position: absolute;
+ z-index: -1;
+ top: 0;
+ right: 0;
+ left: 0;
+ bottom: 0;
+ background-color: transparent;
+}
+
+.md-filled-text-field span,
+.md-filled-text-field label {
+ position: absolute;
+ top: 0.5rem;
+ left: 1rem;
+ right: 1rem;
+ display: block;
+ transform: translateY(1rem);
+ transition-property: transform;
+ transition-duration: var(--md-sys-motion-duration-300);
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ overflow: hidden;
+ color: var(--md-sys-color-on-surface-variant);
+ font-family: var(--md-sys-typescale-body-large-font);
+ font-weight: var(--md-sys-typescale-body-large-weight);
+ font-size: var(--md-sys-typescale-body-large-size);
+ font-style: var(--md-sys-typescale-body-large-font-style);
+ letter-spacing: var(--md-sys-typescale-body-large-tracking);
+ line-height: var(--md-sys-typescale-body-large-line-height);
+ text-transform: var(--md-sys-typescale-body-large-text-transform);
+ text-decoration: var(--md-sys-typescale-body-large-text-decoration);
+}
+
+.md-filled-text-field :not(:placeholder-shown)+span,
+.md-filled-text-field :not(:placeholder-shown)+label,
+.md-filled-text-field .populated+span,
+.md-filled-text-field .populated+label,
+.md-filled-text-field:focus-within span,
+.md-filled-text-field:focus-within label,
+.md-filled-text-field.float span,
+.md-filled-text-field.float label {
+ transform: translateY(0);
+ font-family: var(--md-sys-typescale-body-small-font);
+ font-weight: var(--md-sys-typescale-body-small-weight);
+ font-size: var(--md-sys-typescale-body-small-size);
+ font-style: var(--md-sys-typescale-body-small-font-style);
+ letter-spacing: var(--md-sys-typescale-body-small-tracking);
+ line-height: var(--md-sys-typescale-body-small-line-height);
+ text-transform: var(--md-sys-typescale-body-small-text-transform);
+ text-decoration: var(--md-sys-typescale-body-small-text-decoration);
+}
+
+.md-filled-text-field :not(label, span, small) {
+ position: relative;
+ caret-color: var(--md-sys-color-primary);
+ min-height: 2rem;
+ box-sizing: border-box;
+ padding-left: 1rem;
+ padding-bottom: 0.5rem;
+ padding-right: 1rem;
+ border: none;
+ resize: none;
+ color: var(--md-sys-color-on-surface);
+ font-family: var(--md-sys-typescale-body-large-font);
+ font-weight: var(--md-sys-typescale-body-large-weight);
+ font-size: var(--md-sys-typescale-body-large-size);
+ font-style: var(--md-sys-typescale-body-large-font-style);
+ letter-spacing: var(--md-sys-typescale-body-large-tracking);
+ line-height: var(--md-sys-typescale-body-large-line-height);
+ text-transform: var(--md-sys-typescale-body-large-text-transform);
+ text-decoration: var(--md-sys-typescale-body-large-text-decoration);
+ background-color: transparent;
+ outline: none;
+ border-bottom-width: 0.0625rem;
+ border-bottom-style: solid;
+ border-bottom-color: var(--md-sys-color-on-surface-variant);
+}
+
+.md-filled-text-field ::placeholder {
+ color: transparent;
+}
+
+.md-filled-text-field small {
+ display: block;
+ color: var(--md-sys-color-on-surface-variant);
+ background-color: var(--md-sys-color-background);
+ font-family: var(--md-sys-typescale-body-small-font);
+ font-weight: var(--md-sys-typescale-body-small-weight);
+ font-size: var(--md-sys-typescale-body-small-size);
+ font-style: var(--md-sys-typescale-body-small-font-style);
+ letter-spacing: var(--md-sys-typescale-body-small-tracking);
+ line-height: var(--md-sys-typescale-body-small-line-height);
+ text-transform: var(--md-sys-typescale-body-small-text-transform);
+ text-decoration: var(--md-sys-typescale-body-small-text-decoration);
+ padding: 0.25rem 1rem 0 1rem;
+ white-space: nowrap;
+ text-overflow: ellipsis;
+ overflow: hidden;
+}
+
+.md-filled-text-field:hover span,
+.md-filled-text-field:hover label {
+ color: var(--md-sys-color-on-surface-variant);
+}
+
+.md-filled-text-field:hover :not(label, span, small) {
+ padding-bottom: 0.5rem;
+ border-bottom-width: 0.0625rem;
+ border-bottom-color: var(--md-sys-color-on-surface);
+}
+
+.md-filled-text-field:hover::after {
+ background-color: var(--md-sys-color-on-surface);
+ opacity: var(--md-sys-state-hover-state-layer-opacity);
+}
+
+.md-filled-text-field:hover small {
+ color: var(--md-sys-color-on-surface-variant);
+}
+
+.md-filled-text-field:focus-within span,
+.md-filled-text-field:focus-within label {
+ color: var(--md-sys-color-primary);
+}
+
+.md-filled-text-field :focus {
+ color: var(--md-sys-color-on-surface);
+ outline: none;
+ padding-bottom: 0.4375rem;
+ border-bottom-width: 0.125rem;
+ border-bottom-color: var(--md-sys-color-primary);
+}
+
+.md-filled-text-field:hover :focus {
+ padding-bottom: 0.4375rem;
+ border-bottom-width: 0.125rem;
+}
+
+.md-filled-text-field:focus-within small {
+ color: var(--md-sys-color-on-surface-variant);
+}
+
+.md-filled-text-field :invalid {
+ color: var(--md-sys-color-on-surface);
+ border-bottom-color: var(--md-sys-color-error);
+}
+
+.md-filled-text-field :invalid+span,
+.md-filled-text-field :invalid+label {
+ color: var(--md-sys-color-error);
+}
+
+.md-filled-text-field :invalid~small,
+.md-filled-text-field:hover :invalid~small,
+.md-filled-text-field:focus-within .input-text:invalid~small {
+ color: var(--md-sys-color-error);
+}
+
+.md-filled-text-field :invalid:focus {
+ caret-color: var(--md-sys-color-error);
+ border-bottom-color: var(--md-sys-color-error);
+}
+
+.md-filled-text-field:hover :invalid {
+ color: var(--md-sys-color-on-surface);
+ border-bottom-color: var(--md-sys-color-error);
+}

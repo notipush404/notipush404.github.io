@@ -1,0 +1,188 @@
+.md-switch {
+ -webkit-appearance: none;
+ appearance: none;
+ position: relative;
+ display: inline-block;
+ vertical-align: middle;
+ box-sizing: content-box;
+ padding: 0;
+ padding-block: 0;
+ padding-inline: 0;
+}
+
+.md-switch:focus {
+ outline: none;
+}
+
+/* Track */
+body.material .md-switch {
+ width: 3rem;
+ height: 1.75rem;
+ border-radius: 1rem;
+ border: 0.125rem solid var(--md-sys-color-outline);
+ background-color: var(--md-sys-color-surface-container-highest);
+}
+
+body.material .md-switch:checked {
+ background-color: var(--md-sys-color-primary);
+}
+
+/* State */
+body.material .md-switch::before {
+ content: "";
+ display: none;
+ position: absolute;
+ height: 2.5rem;
+ width: 2.5rem;
+ border-radius: 1.25rem;
+ top: -0.375rem;
+ left: -0.375rem;
+}
+
+body.material .md-switch:checked:before {
+ left: auto;
+ right: -0.375rem;
+}
+
+/* Handle */
+body.material .md-switch::after {
+ content: "";
+ display: inline-block;
+ position: absolute;
+ transition-property: all;
+ transition-duration: var(--md-sys-motion-duration-700);
+ height: 1rem;
+ width: 1rem;
+ border-radius: 0.5rem;
+ top: 0.375rem;
+ left: 0.375rem;
+ background-color: var(--md-sys-color-outline);
+ box-shadow: var(--md-box_shadow_level1);
+}
+
+body.material .md-switch:checked:after {
+ height: 1.5rem;
+ width: 1.5rem;
+ border-radius: 0.75rem;
+ top: 0.125rem;
+ left: auto;
+ right: 0.125rem;
+ background-color: var(--md-sys-color-on-primary);
+}
+
+body.material .md-switch:hover::before {
+ display: inline-block;
+ background-color: var(--md-sys-color-on-surface);
+ opacity: var(--md-sys-state-hover-state-layer-opacity);
+}
+
+body.material .md-switch:checked:hover::before {
+ background-color: var(--md-sys-color-primary);
+}
+
+body.material .md-switch:hover::after {
+ background-color: var(--md-sys-color-on-surface-variant);
+}
+
+body.material .md-switch:checked:hover::after {
+ background-color: var(--md-sys-color-primary-container);
+}
+
+body.material .md-switch:focus::before {
+ display: inline-block;
+ background-color: var(--md-sys-color-on-surface);
+ opacity: var(--md-sys-state-focus-state-layer-opacity);
+}
+
+body.material .md-switch:checked:focus::before {
+ background-color: var(--md-sys-color-primary);
+}
+
+body.material .md-switch:focus::after {
+ background-color: var(--md-sys-color-on-surface-variant);
+}
+
+body.material .md-switch:checked:focus::after {
+ background-color: var(--md-sys-color-primary-container);
+}
+
+body.material .md-switch:active::before {
+ display: inline-block;
+ background-color: var(--md-sys-color-on-surface);
+ opacity: var(--md-sys-state-focus-state-layer-opacity);
+}
+
+
+body.material .md-switch:checked:active::before {
+ background-color: var(--md-sys-color-primary);
+}
+
+body.material .md-switch:active::after {
+ width: 1.75rem;
+ height: 1.75rem;
+ top: 0;
+ left: 0;
+ border-radius: 0.875rem;
+ background-position: center;
+ animation-name: md-ripple;
+ animation-duration: var(--md-sys-motion-duration-500);
+ background-size: 100%;
+ background-color: var(--md-sys-color-on-surface-variant);
+ background-image:
+  radial-gradient(circle, var(--md-sys-color-primary-container) 1%, transparent 1%);
+ box-shadow: var(--md-box_shadow_level1), 0 0 0 0.375rem color-mix(in srgb, var(--md-sys-color-on-surface), transparent var(--state-pressed-transparency-percentage)) !important;
+}
+
+body.material .md-switch:checked:active::after {
+ left: auto;
+ right: 0;
+ background-color: var(--md-sys-color-primary-container);
+ background-image:
+  radial-gradient(circle, var(--md-riple-color) 1%, transparent 1%);
+ box-shadow: var(--md-box_shadow_level1), 0 0 0 0.375rem color-mix(in srgb, var(--md-sys-color-primary), transparent var(--state-pressed-transparency-percentage)) !important;
+}
+
+body.apple .md-switch {
+ width: 3rem;
+ border-radius: 0.875rem;
+ height: 1.75rem;
+ background-color: var(--colIntIosOffBk);
+}
+
+body.apple .md-switch:checked {
+ background-color: var(--colIntIosOnBk);
+}
+
+body.apple .md-switch:focus {
+ background-color: var(--colIntIosOffBkFc);
+}
+
+body.apple .md-switch:checked:focus {
+ background-color: var(--colIntIosOnBkFc);
+}
+
+body.apple .md-switch::after {
+ content: "";
+ display: inline-block;
+ position: absolute;
+ width: 1.5rem;
+ height: 1.5rem;
+ border-radius: 0.75rem;
+ top: 0.125rem;
+ left: 0.125rem;
+ background-color: var(--colIntIos);
+}
+
+body.apple .md-switch:checked::after {
+ left: auto;
+ right: 0.125rem;
+ border-color: var(--colIntIosOnBk);
+}
+
+body.apple .md-switch:focus::after {
+ border-color: var(--colIntIosOffBkFc);
+}
+
+body.apple .md-switch:checked:focus::after {
+ border-color: var(--colIntIosOnBkFc);
+}
